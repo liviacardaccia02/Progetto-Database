@@ -3,7 +3,7 @@
 -- *--------------------------------------------
 -- * DB-MAIN version: 11.0.2              
 -- * Generator date: Sep 14 2021              
--- * Generation date: Fri Sep  1 12:08:55 2023 
+-- * Generation date: Fri Sep  1 12:46:21 2023 
 -- * LUN file: C:\Users\livia\Desktop\UNI\Database\Elaborato.lun 
 -- * Schema: ER/1 
 -- ********************************************* 
@@ -23,67 +23,67 @@ create database ER;
 -- _____________ 
 
 create table AGGIUNTA (
-     Nome esercizio char(1) not null,
-     Gruppo muscolare esercizio char(1) not null,
-     Codice allenamento char(1) not null,
+     Nome esercizio varchar(20) not null,
+     Gruppo muscolare esercizio varchar(20) not null,
+     Codice allenamento numeric(1) not null,
      constraint IDAGGIUNTA primary key (Nome esercizio, Gruppo muscolare esercizio, Codice allenamento));
 
 create table ALLENAMENTO (
-     Codice allenamento char(1) not null,
-     Titolo char(1) not null,
-     Data char(1) not null,
-     Durata char(1) not null,
-     Livello di intensità char(1) not null,
+     Codice allenamento numeric(1) not null,
+     Titolo varchar(50) not null,
+     Data date not null,
+     Durata float(1) not null,
+     Livello di intensità varchar(20) not null,
      Utente -- Compound attribute -- not null,
      constraint IDALLENAMENTO_ID primary key (Codice allenamento));
 
 create table AMICIZIA (
      Richiedente -- Compound attribute -- not null,
      Ricevente -- Compound attribute -- not null,
-     Stato dell'amicizia char(1) not null,
+     Stato dell'amicizia varchar(10) not null,
      constraint IDAMICIZIA primary key (Richiedente -- Compound attribute --, Ricevente -- Compound attribute --));
 
 create table ESERCIZIO (
-     Nome char(1) not null,
-     Gruppo muscolare  char(1) not null,
-     Descrizione char(1) not null,
+     Nome varchar(20) not null,
+     Gruppo muscolare  varchar(20) not null,
+     Descrizione varchar(200) not null,
      Creatore -- Compound attribute -- not null,
      constraint IDESERCIZIO primary key (Nome, Gruppo muscolare ));
 
 create table INTERAZIONE (
-     ID interazione char(1) not null,
+     ID interazione numeric(1) not null,
      Tipo di interazione char(1) not null,
-     Testo[0,1] char(1) not null,
-     Data char(1) not null,
+     Testo[0,1] varchar(200) not null,
+     Data date not null,
      Utente -- Compound attribute -- not null,
      constraint IDINTERAZIONI_ID primary key (ID interazione));
 
 create table MEDICO (
-     CF char(1) not null,
-     Nome char(1) not null,
-     Cognome char(1) not null,
-     Email char(1) not null,
-     Numero di telefono char(1) not null,
-     Specializzazione char(1) not null,
+     CF varchar(16) not null,
+     Nome varchar(20) not null,
+     Cognome varchar(20) not null,
+     Email varchar(100) not null,
+     Numero di telefono numeric(1) not null,
+     Specializzazione varchar(20) not null,
      constraint IDDOTTORE primary key (CF));
 
 create table MISURAZIONE CORPOREA (
      Utente -- Compound attribute -- not null,
-     Data della misurazione char(1) not null,
-     Peso char(1) not null,
-     Altezza char(1) not null,
-     Circonferenza vita [0,1] char(1) not null,
-     Circonferenza braccia[0,1] char(1) not null,
-     Circonferenza gambe[0,1] char(1) not null,
+     Data della misurazione date not null,
+     Peso float(1) not null,
+     Altezza float(1) not null,
+     Circonferenza vita [0,1] float(1) not null,
+     Circonferenza braccia[0,1] float(1) not null,
+     Circonferenza gambe[0,1] float(1) not null,
      constraint IDMISURAZIONE CORPOREA primary key (Utente -- Compound attribute --, Data della misurazione));
 
 create table POST (
-     ID post char(1) not null,
+     ID post numeric(1) not null,
      Interazione char(1),
-     Allenamento collegato char(1) not null,
-     Data pubblicazione char(1) not null,
-     Titolo char(1) not null,
-     Didascalia char(1) not null,
+     Allenamento collegato numeric(1) not null,
+     Data pubblicazione date not null,
+     Titolo varchar(50) not null,
+     Didascalia varchar(200) not null,
      Autore -- Compound attribute -- not null,
      constraint IDPOST primary key (ID post),
      constraint FKriferimento_ID unique (Interazione),
@@ -91,21 +91,21 @@ create table POST (
 
 create table UTENTE (
      ID utente -- Compound attribute -- not null,
-     Nome char(1) not null,
-     Cognome char(1) not null,
-     Username char(1) not null,
-     Email char(1) not null,
-     Data di registrazione char(1) not null,
-     Numero di telefono[0,1] char(1) not null,
+     Nome varchar(20) not null,
+     Cognome varchar(20) not null,
+     Username varchar(20) not null,
+     Email varchar(100) not null,
+     Data di registrazione date not null,
+     Numero di telefono[0,1] numeric(1) not null,
      constraint IDUTENTE_ID primary key (ID utente -- Compound attribute --));
 
 create table VISITA (
-     Codice visita char(1) not null,
-     Data char(1) not null,
-     Ora char(1) not null,
-     Prezzo char(1) not null,
+     Codice visita numeric(1) not null,
+     Data date not null,
+     Ora numeric(1) not null,
+     Prezzo float(1) not null,
      Paziente -- Compound attribute -- not null,
-     Medico char(1) not null,
+     Medico varchar(16) not null,
      constraint IDVISITA primary key (Codice visita));
 
 
