@@ -9,8 +9,8 @@ create table AGGIUNTA (
 create table ALLENAMENTO (
      CodiceAllenamento int identity(1,1) not null,
      Titolo varchar(50) not null default 'Nuovo Allenamento',
-     DataAllenamento date not null,
-     DurataMinuti int not null,
+     DataAllenamento date not null default '2023-09-01',
+     DurataMinuti int not null default '60',
      LivelloIntensità varchar(20) not null default 'Facile',
      Utente int not null,
      constraint IDALLENAMENTO primary key (CodiceAllenamento));
@@ -18,21 +18,21 @@ create table ALLENAMENTO (
 create table AMICIZIA (
      Richiedente int not null,
      Ricevente int not null,
-     StatoAmicizia varchar(10) not null,
+     StatoAmicizia varchar(10) not null default 'In attesa',
      constraint IDAMICIZIA primary key (Richiedente, Ricevente));
 
 create table ESERCIZIO (
-     Nome varchar(20) not null,
-     GruppoMuscolare  varchar(20) not null,
-     Descrizione varchar(200) not null,
+     Nome varchar(20) not null default 'Nuovo Esercizio',
+     GruppoMuscolare  varchar(20) not null default 'Gruppo muscolare non disponibile',
+     Descrizione varchar(200) not null default 'Descrizione non disponibile',
      Creatore int not null,
      constraint IDESERCIZIO primary key (Nome, GruppoMuscolare));
 
 create table INTERAZIONE (
      IDinterazione int identity(1,1) not null,
-     TipoInterazione varchar(10) not null,
+     TipoInterazione varchar(10) not null default 'Like',
      Testo varchar(200),
-     Data date not null,
+     Data date not null default '2023-09-01',
      Utente int not null,
      constraint IDINTERAZIONI primary key (IDinterazione));
 
@@ -61,7 +61,7 @@ create table POST (
      AllenamentoCollegato int not null,
      DataPubblicazione date not null,
      Titolo varchar(50) not null default 'Nuovo Post',
-     Didascalia varchar(200) not null,
+     Didascalia varchar(200) not null default 'Ecco il mio allenamento!',
      Autore int not null,
      constraint IDPOST primary key (IDpost),
      constraint FKriferimento_ID unique (Interazione),
@@ -81,7 +81,7 @@ create table VISITA (
      CodiceVisita int identity(1,1) not null,
      DataVisita date not null,
      OraVisita time not null,
-     PrezzoVisita money not null check(PrezzoVisita > 0),
+     PrezzoVisita money not null check(PrezzoVisita > 0) default '50',
      Paziente int not null,
      Medico varchar(16) not null,
      constraint IDVISITA primary key (CodiceVisita));
