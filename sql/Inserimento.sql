@@ -79,7 +79,13 @@ VALUES
 	('Crunch', 'Addominali', 'consigliato uso di un tappetino', 26),
 	('Squat', 'Glutei', 'si può effettuare a corpo libero o col bilanciere', 27),
 	('Rematore ai cavi', 'Schiena', 'esercizio da eseguire con apposito macchinario', 22),
-	('Trazioni', 'Schiena', 'da eseguire con o senza peso', 22);
+	('Trazioni', 'Schiena', 'da eseguire con o senza peso', 22),
+	('Hip thrust', 'Glutei', 'da eseguire con peso o bilanciere', 27),
+	('Affondo bulgaro', 'Glutei', 'attenzione alla discesa', 27),
+	('Panca piana', 'Petto', 'con manubri o con bilanciere', 23),
+	('Panca inclinata', 'Petto', 'con manubri o con bilanciere', 23),
+	('Flessioni', 'Petto', 'adatte al riscaldamento', 24),
+	('Stretching', 'Total body', 'da eseguire prima e dopo', 24);
 
 INSERT INTO ALLENAMENTO (Titolo, DataAllenamento, DurataMinuti, LivelloIntensità, Utente)
 VALUES
@@ -93,7 +99,10 @@ VALUES
 	('Pilates', '2023-08-08', 50, 'Facile', 16),
 	('Cardio', '2023-03-25', 45, 'Medio', 18),
 	('Leg day', '2023-02-04', 90, 'Difficile', 11),
-	('Upper body', '2023-02-13', 60, 'Medio', 13);
+	('Upper body', '2023-02-13', 60, 'Medio', 13),
+	('Allenamento del lunedì', '2023-07-25', 120, 'Difficile', 1),
+	('Allenamento del mercoledì', '2023-03-01', 90, 'Medio', 1),
+	('Allenamento del venerdì', '2023-03-05', 60, 'Facile', 1);
 
 INSERT INTO INTERAZIONE (TipoInterazione, Testo, Data, Utente)
 VALUES 
@@ -134,7 +143,10 @@ VALUES
 	(10, 9, '2023-06-10', 'Glutei on fire', 'Mi preparo alla prossima estate :)', 23),
 	(23, 10, '2023-07-21', 'Ciao a tutti', 'ciao', 38),
 	(16, 11, '2023-08-29', 'Riscaldamento', 'Per iniziare al meglio', 29),
-	(13, 12, '2023-08-08', 'Lezione di pilates', 'Adoro le lezioni online', 16);
+	(13, 12, '2023-08-08', 'Lezione di pilates', 'Adoro le lezioni online', 16),
+	(6, 16, '2023-07-25', 'Super Workout', 'Oggi allenamento al top', 1),
+	(21, 17, '2023-03-01', 'Buon mercoledì', 'Un ottimo allenamento', 1),
+	(20, 18, '2023-03-05', 'Send help', 'di venerdì la palestra è piena!!', 1);
 
 INSERT INTO MISURAZIONE_CORPOREA(Utente, DataMisurazione, Peso, Altezza, CirconferenzaVita, CirconferenzaBraccia, CirconferenzaGambe)
 VALUES 
@@ -148,3 +160,61 @@ VALUES
     (8, '2023-08-08',  78, 172, 86, 33, 43),
     (9, '2023-08-09', 69, 179, 76, 28.5, 38.5),
     (10, '2023-08-10', 73, 174, 83, 31.5, 41.5);
+
+INSERT INTO AGGIUNTA (NomeEsercizio, GruppoMuscolareEsercizio, CodiceAllenamento)
+VALUES 
+	('Lat pulldown', 'Schiena', 7),
+	('Rematore ai cavi', 'Schiena', 7),
+	('Trazioni', 'Schiena', 7),
+	('Squat', 'Glutei', 9),
+	('Hip thrust', 'Glutei', 9),
+	('Affondo bulgaro', 'Glutei', 9),
+	('Panca piana', 'Petto', 8),
+	('Panca inclinata', 'Petto', 8),
+	('Dip', 'Petto', 8),
+	('Stretching', 'Total body', 11),
+	('Flessioni', 'Petto', 11),
+	('Tapis roulant', 'Cardio', 11);
+
+INSERT INTO AMICIZIA (Richiedente, Ricevente, StatoAmicizia)
+VALUES
+    (1, 2, 'Accettata'),
+    (2, 3, 'In attesa'),
+    (3, 4, 'Rifiutata'),
+    (4, 5, 'In attesa'),
+    (5, 6, 'Accettata'),
+    (6, 7, 'Rifiutata'),
+    (7, 8, 'In attesa'),
+    (8, 9, 'Accettata'),
+    (9, 10, 'In attesa'),
+    (10, 11, 'Rifiutata'),
+    (11, 12, 'Accettata'),
+    (12, 13, 'Rifiutata'),
+    (13, 14, 'In attesa'),
+    (14, 15, 'Accettata'),
+    (15, 16, 'In attesa'),
+    (16, 17, 'Rifiutata'),
+    (17, 18, 'In attesa'),
+    (18, 19, 'Accettata'),
+    (19, 20, 'In attesa'),
+    (20, 1, 'Accettata'),
+	(21, 1, 'Accettata'),
+    (22, 1, 'In attesa'),
+    (23, 1, 'Rifiutata'),
+    (24, 1, 'In attesa'),
+    (25, 1, 'Accettata'),
+    (26, 1, 'Rifiutata'),
+    (27, 1, 'In attesa'),
+    (28, 1, 'Accettata'),
+    (29, 1, 'In attesa'),
+    (30, 1, 'Rifiutata'),
+    (31, 1, 'Accettata'),
+    (32, 1, 'Rifiutata'),
+    (33, 1, 'In attesa'),
+    (34, 1, 'Accettata'),
+    (35, 1, 'In attesa'),
+    (36, 1, 'Rifiutata'),
+    (37, 1, 'In attesa'),
+    (38, 1, 'Accettata'),
+    (39, 1, 'In attesa'),
+    (40, 1, 'Accettata');
