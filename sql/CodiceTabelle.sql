@@ -98,14 +98,6 @@ alter table AGGIUNTA add constraint FKR_1
      foreign key (CodiceAllenamento)
      references ALLENAMENTO;
 
---alter table ALLENAMENTO add constraint IDALLENAMENTO_CHK
---     check(exists(select * from AGGIUNTA
---                  where AGGIUNTA.CodiceAllenamento = CodiceAllenamento)); 
-
---alter table ALLENAMENTO add constraint IDALLENAMENTO_CHK
---     check(exists(select * from POST
---                  where POST.AllenamentoCollegato = CodiceAllenamento)); 
-
 alter table ALLENAMENTO add constraint FKcomposizione
      foreign key (Utente)
      references UTENTE;
@@ -121,10 +113,6 @@ alter table AMICIZIA add constraint FKriceve
 alter table ESERCIZIO add constraint FKcreazione
      foreign key (Creatore)
      references UTENTE;
-
---alter table INTERAZIONE add constraint IDINTERAZIONI_CHK
---     check(exists(select * from POST
---                  where POST.Interazione = IDinterazione)); 
 
 alter table INTERAZIONE add constraint FKcondivisione
      foreign key (Utente)

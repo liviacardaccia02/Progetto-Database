@@ -70,14 +70,16 @@ VALUES
     ('2023-09-17', '11:30:00', 100, 30, 'GHIJKL56M78N123O'),
     ('2023-09-18', '13:00:00', 60, 31, 'RSTUVW12X34Y567Z');
 
-INSERT INTO ESERCIZIO (Nome, GruppoMuscolare, Descrizione)
+INSERT INTO ESERCIZIO (Nome, GruppoMuscolare, Descrizione, Creatore)
 VALUES
-	('Lat pulldown', 'Schiena', 'esercizio da eseguire con apposito macchinario'),
-	('Dip', 'Petto', 'esercizio che può essere fatto sia con la macchina che con un peso'),
-	('Tapis roulant', 'Cardio', 'corsa lenta o accelerata adatta al riscaldamento'),
-	('Curl', 'Bicipiti', 'movimento da eseguire con manubri'),
-	('Crunch', 'Addominali', 'consigliato uso di un tappetino'),
-	('Squat', 'Glutei', 'si può effettuare a corpo libero o col bilanciere');
+	('Lat pulldown', 'Schiena', 'esercizio da eseguire con apposito macchinario', 22),
+	('Dip', 'Petto', 'esercizio che può essere fatto sia con la macchina che con un peso', 23),
+	('Tapis roulant', 'Cardio', 'corsa lenta o accelerata adatta al riscaldamento', 24),
+	('Curl', 'Bicipiti', 'movimento da eseguire con manubri', 25),
+	('Crunch', 'Addominali', 'consigliato uso di un tappetino', 26),
+	('Squat', 'Glutei', 'si può effettuare a corpo libero o col bilanciere', 27),
+	('Rematore ai cavi', 'Schiena', 'esercizio da eseguire con apposito macchinario', 22),
+	('Trazioni', 'Schiena', 'da eseguire con o senza peso', 22);
 
 INSERT INTO ALLENAMENTO (Titolo, DataAllenamento, DurataMinuti, LivelloIntensità, Utente)
 VALUES
