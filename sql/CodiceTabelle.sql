@@ -56,7 +56,7 @@ create table MISURAZIONE_CORPOREA (
      constraint IDMISURAZIONE_CORPOREA primary key (Utente, DataMisurazione));
 
 create table POST (
-     IDpost int not null,
+     IDpost int identity(1,1) not null,
      Interazione int,
      AllenamentoCollegato int not null,
      DataPubblicazione date not null,
