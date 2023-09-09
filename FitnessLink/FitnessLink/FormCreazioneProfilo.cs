@@ -8,6 +8,7 @@ namespace FitnessLink
         public FormCreazioneProfilo()
         {
             InitializeComponent();
+            this.Text = "FitnessLink - Creazione profilo";
         }
 
         private void button1_Click(object sender, EventArgs e)

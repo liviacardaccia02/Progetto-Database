@@ -15,6 +15,7 @@ namespace FitnessLink
         public FormVisualizzazioneAmicizie()
         {
             InitializeComponent();
+            this.Text = "FitnessLink - Amicizie";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -33,7 +34,7 @@ namespace FitnessLink
                                 from amicizia in AmicizieRicevente.DefaultIfEmpty()
                                 join u2 in Form1.db.UTENTE on amicizia.Richiedente equals u2.IDutente into UtentiRichiedenti
                                 from utenteRichiedente in UtentiRichiedenti.DefaultIfEmpty()
-                                where u1.IDutente == 1
+                                where u1.IDutente == id_n
                                 select new
                                 {
                                     Username = u1.Username,

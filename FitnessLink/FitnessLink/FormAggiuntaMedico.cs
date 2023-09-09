@@ -15,6 +15,7 @@ namespace FitnessLink
         public FormAggiuntaMedico()
         {
             InitializeComponent();
+            this.Text = "FitnessLink - Medici";
         }
 
         private void button1_Click(object sender, EventArgs e)

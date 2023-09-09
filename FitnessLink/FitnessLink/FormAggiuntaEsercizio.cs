@@ -15,6 +15,7 @@ namespace FitnessLink
         public FormAggiuntaEsercizio()
         {
             InitializeComponent();
+            this.Text = "FitnessLink - Aggiunta esercizio";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -26,9 +27,9 @@ namespace FitnessLink
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string nome = textBox1.Text;
-            string muscolo = textBox2.Text;
-            string allenamento = textBox3.Text;
+            string nome = textBox2.Text;
+            string muscolo = textBox3.Text;
+            string allenamento = textBox1.Text;
 
             if (string.IsNullOrWhiteSpace(nome)
                 || string.IsNullOrWhiteSpace(muscolo)

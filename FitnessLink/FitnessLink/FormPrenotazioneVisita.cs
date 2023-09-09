@@ -8,6 +8,7 @@ namespace FitnessLink
         public FormPrenotazioneVisita()
         {
             InitializeComponent();
+            this.Text = "FitnessLink - Prenotazione visita";
         }
 
         private void FormPrenotazioneVisita_Load(object sender, EventArgs e)

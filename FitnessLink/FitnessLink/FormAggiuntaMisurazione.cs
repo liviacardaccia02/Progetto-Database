@@ -17,6 +17,7 @@ namespace FitnessLink
         public FormAggiuntaMisurazione()
         {
             InitializeComponent();
+            this.Text = "FitnessLink - Aggiunta misurazione corporea";
         }
 
         private void FormAggiuntaMisurazione_Load(object sender, EventArgs e)

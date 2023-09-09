@@ -20,12 +20,14 @@ namespace FitnessLink
             comboBox1.Items.Add("Utente");
             comboBox1.Items.Add("Allenamento");
             comboBox1.Items.Add("Esercizio");
+            comboBox1.Items.Add("Aggiunta");
             comboBox1.Items.Add("Post");
             comboBox1.Items.Add("Misurazione_corporea");
             comboBox1.Items.Add("Amicizia");
             comboBox1.Items.Add("Interazione");
             comboBox1.Items.Add("Medico");
             comboBox1.Items.Add("Visita");
+            this.Text = "FitnessLink - Home";
         }
 
         public static DataClasses1DataContext db = null;
@@ -123,12 +125,37 @@ namespace FitnessLink
                               select A;
                         break;
                     case "Esercizio":
-                        res = from E in Form1.db.ESERCIZIO
-                              select E;
+                        res = from es in Form1.db.ESERCIZIO
+                                    join u in Form1.db.UTENTE
+                                    on es.Creatore equals u.IDutente
+                                    select new
+                                    {
+                                        Esercizio = es.Nome,
+                                        es.GruppoMuscolare,
+                                        es.Descrizione,
+                                        Creatore = u.Username
+                                    };
+
+                        break;
+                    case "Aggiunta":
+                        res = from A in Form1.db.AGGIUNTA
+                              select A;
                         break;
                     case "Post":
-                        res = from P in Form1.db.POST
-                              select P;
+                        res = from p in db.POST
+                                    join i in db.INTERAZIONE on p.Interazione equals i.IDinterazione
+                                    join a in db.ALLENAMENTO on p.AllenamentoCollegato equals a.CodiceAllenamento
+                                    join u in db.UTENTE on p.Autore equals u.IDutente
+                                    select new 
+                                    {
+                                        IDpost = p.IDpost,
+                                        TipoInterazione = i.TipoInterazione,
+                                        AllenamentoCollegato = a.Titolo,
+                                        DataPubblicazione = p.DataPubblicazione,
+                                        Titolo = p.Titolo,
+                                        Didascalia = p.Didascalia,
+                                        Username = u.Username
+                                    };
                         break;
                     case "Misurazione_corporea":
                         res = from M in Form1.db.MISURAZIONE_CORPOREA

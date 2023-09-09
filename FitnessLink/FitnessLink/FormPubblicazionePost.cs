@@ -15,6 +15,7 @@ namespace FitnessLink
         public FormPubblicazionePost()
         {
             InitializeComponent();
+            this.Text = "FitnessLink - Pubblicazione post";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,6 +41,16 @@ namespace FitnessLink
             {
                 try
                 {
+                    INTERAZIONE i = new INTERAZIONE 
+                    {
+                        TipoInterazione = "Like",
+                        Data = data,
+                        Utente = id_n,
+                    };
+
+                    Form1.db.INTERAZIONE.InsertOnSubmit(i);
+                    Form1.db.SubmitChanges();
+
                     POST p = new POST
                     {
                         Titolo = titolo,
@@ -47,10 +58,12 @@ namespace FitnessLink
                         AllenamentoCollegato = allenamento_n,
                         DataPubblicazione = data,
                         Autore = id_n,
+                        Interazione = i.IDinterazione,
                     };
 
                     Form1.db.POST.InsertOnSubmit(p);
                     Form1.db.SubmitChanges();
+
                     MessageBox.Show("Post pubblicato con successo!");
 
                 }

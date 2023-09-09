@@ -15,11 +15,13 @@ namespace FitnessLink
         public FormVisualizzazioneProfilo()
         {
             InitializeComponent();
+            this.Text = "FitnessLink - Users";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string id = this.textBox1.Text;
+
             if(string.IsNullOrWhiteSpace(id)) 
             {
                 Form1.ErrorMessage("Inserire tutti i valori.");
@@ -39,7 +41,8 @@ namespace FitnessLink
                                 u.Cognome,
                                 u.Username,
                                 PostPubblicato = post != null ? post.Titolo : null,
-                                DataDiPubblicazione = post.DataPubblicazione
+                                DataDiPubblicazione = post != null ?
+                                (DateTime?)post.DataPubblicazione : null,
                             };
                 dataGridView1.DataSource = query;
             }

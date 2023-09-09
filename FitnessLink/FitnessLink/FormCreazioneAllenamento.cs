@@ -16,6 +16,7 @@ namespace FitnessLink
         public FormCreazioneAllenamento()
         {
             InitializeComponent();
+            this.Text = "FitnessLink - Creazione allenamento";
         }
 
         private void button1_Click_1(object sender, EventArgs e)
