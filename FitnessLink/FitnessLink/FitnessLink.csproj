@@ -58,8 +58,106 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAggiuntaEsercizio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAggiuntaEsercizio.Designer.cs">
+      <DependentUpon>FormAggiuntaEsercizio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAggiuntaMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAggiuntaMedico.Designer.cs">
+      <DependentUpon>FormAggiuntaMedico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAggiuntaMisurazione.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAggiuntaMisurazione.Designer.cs">
+      <DependentUpon>FormAggiuntaMisurazione.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCreazioneEsercizio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCreazioneEsercizio.Designer.cs">
+      <DependentUpon>FormCreazioneEsercizio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCreazioneProfilo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCreazioneProfilo.Designer.cs">
+      <DependentUpon>FormCreazioneProfilo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCreazioneAllenamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCreazioneAllenamento.Designer.cs">
+      <DependentUpon>FormCreazioneAllenamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPrenotazioneVisita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrenotazioneVisita.Designer.cs">
+      <DependentUpon>FormPrenotazioneVisita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPubblicazionePost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPubblicazionePost.Designer.cs">
+      <DependentUpon>FormPubblicazionePost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVisualizzazioneAmicizie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVisualizzazioneAmicizie.Designer.cs">
+      <DependentUpon>FormVisualizzazioneAmicizie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVisualizzazioneProfilo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVisualizzazioneProfilo.Designer.cs">
+      <DependentUpon>FormVisualizzazioneProfilo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocialNetworkPalestraDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SocialNetworkPalestraDataSet.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAggiuntaEsercizio.resx">
+      <DependentUpon>FormAggiuntaEsercizio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAggiuntaMedico.resx">
+      <DependentUpon>FormAggiuntaMedico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAggiuntaMisurazione.resx">
+      <DependentUpon>FormAggiuntaMisurazione.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCreazioneAllenamento.resx">
+      <DependentUpon>FormCreazioneAllenamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCreazioneEsercizio.resx">
+      <DependentUpon>FormCreazioneEsercizio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCreazioneProfilo.resx">
+      <DependentUpon>FormCreazioneProfilo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrenotazioneVisita.resx">
+      <DependentUpon>FormPrenotazioneVisita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPubblicazionePost.resx">
+      <DependentUpon>FormPubblicazionePost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVisualizzazioneAmicizie.resx">
+      <DependentUpon>FormVisualizzazioneAmicizie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVisualizzazioneProfilo.resx">
+      <DependentUpon>FormVisualizzazioneProfilo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -86,6 +184,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SocialNetworkPalestraDataSet.xsc">
+      <DependentUpon>SocialNetworkPalestraDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SocialNetworkPalestraDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SocialNetworkPalestraDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SocialNetworkPalestraDataSet.xss">
+      <DependentUpon>SocialNetworkPalestraDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
