@@ -68,12 +68,22 @@ namespace FitnessLink
                 Form1.db.MEDICO.InsertOnSubmit(m);
                 Form1.db.SubmitChanges();
                 MessageBox.Show("Ti sei iscritto con successo, buon lavoro!");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
             }
             catch (Exception ex) 
             {
                 Form1.ErrorMessage(ex.Message);
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
             }
-            
+
         }
     }
 }

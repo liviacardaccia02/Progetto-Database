@@ -53,16 +53,28 @@ namespace FitnessLink
                     Form1.db.ALLENAMENTO.InsertOnSubmit(a);
                     Form1.db.SubmitChanges();
                     MessageBox.Show("Allenamento creato con successo!");
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
+                    monthCalendar1.SelectionRange = new SelectionRange();
 
                 }
                 catch (Exception ex)
                 {
                     Form1.ErrorMessage(ex.Message);
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
+                    monthCalendar1.SelectionRange = new SelectionRange();
                 }
             }
             else
             {
                 Form1.ErrorMessage("Inserisci un numero valido");
+                textBox2.Text = "";
+                textBox4.Text = "";
             }
         }
     }

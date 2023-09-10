@@ -49,6 +49,7 @@ namespace FitnessLink
             else 
             {
                 Form1.ErrorMessage("Inserisci un id valido");
+                textBox1.Text = string.Empty;
             }
 
         }

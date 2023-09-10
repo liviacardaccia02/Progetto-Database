@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FitnessLink
 {
@@ -65,16 +66,27 @@ namespace FitnessLink
                     Form1.db.SubmitChanges();
 
                     MessageBox.Show("Post pubblicato con successo!");
-
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
+                    dateTimePicker1.Value = DateTime.Now;
                 }
                 catch (Exception ex)
                 {
                     Form1.ErrorMessage(ex.Message);
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
+                    dateTimePicker1.Value = DateTime.Now;
                 }
             }
             else
             {
                 Form1.ErrorMessage("Inserisci un numero valido");
+                textBox3.Text = "";
+                textBox4.Text = "";
             }
         }
     }

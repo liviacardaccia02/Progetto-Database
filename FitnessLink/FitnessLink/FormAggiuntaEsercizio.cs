@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FitnessLink
 {
@@ -21,7 +22,15 @@ namespace FitnessLink
         private void button1_Click(object sender, EventArgs e)
         {
             IQueryable res = from E in Form1.db.ESERCIZIO
-                             select E;
+                             join U in Form1.db.UTENTE
+                             on E.Creatore equals U.IDutente
+                             select new
+                             {
+                                 E.Nome,
+                                 E.GruppoMuscolare,
+                                 E.Descrizione,
+                                 Creatore = U.Username,
+                             };
             dataGridView1.DataSource = res;
         }
 
@@ -53,16 +62,23 @@ namespace FitnessLink
                     Form1.db.AGGIUNTA.InsertOnSubmit(a);
                     Form1.db.SubmitChanges();
                     MessageBox.Show("Esercizio aggiunto con successo!");
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
 
                 }
                 catch (Exception ex)
                 {
                     Form1.ErrorMessage(ex.Message);
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
                 }
             }
             else
             {
                 Form1.ErrorMessage("Inserisci un numero valido");
+                textBox1.Text = "";
             }
         }
     }

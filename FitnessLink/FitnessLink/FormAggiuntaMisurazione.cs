@@ -71,16 +71,36 @@ namespace FitnessLink
                     Form1.db.MISURAZIONE_CORPOREA.InsertOnSubmit(mc);
                     Form1.db.SubmitChanges();
                     MessageBox.Show("Misurazione inserita con successo!");
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
+                    textBox5.Text = "";
+                    textBox6.Text = "";
+                    monthCalendar1.SelectionRange = new SelectionRange();
 
                 }
                 catch (Exception ex)
                 {
                     Form1.ErrorMessage(ex.Message);
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
+                    textBox5.Text = "";
+                    textBox6.Text = "";
+                    monthCalendar1.SelectionRange = new SelectionRange();
                 }
             }
             else
             {
                 Form1.ErrorMessage("Inserisci un numero valido");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+                textBox6.Text = "";
             }
         }
     }

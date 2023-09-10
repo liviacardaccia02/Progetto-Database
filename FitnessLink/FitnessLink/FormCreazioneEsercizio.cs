@@ -41,15 +41,24 @@ namespace FitnessLink
                     Form1.db.ESERCIZIO.InsertOnSubmit(es);
                     Form1.db.SubmitChanges();
                     MessageBox.Show("Esercizio creato con successo!");
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
                 }
                 catch (Exception ex)
                 {
                     Form1.ErrorMessage(ex.Message);
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
                 }
             }
             else 
             {
                 Form1.ErrorMessage("Inserisci un numero valido");
+                textBox4.Text = "";
             }
 
         }

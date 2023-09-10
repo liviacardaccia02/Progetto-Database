@@ -47,11 +47,22 @@ namespace FitnessLink
                 Form1.db.SubmitChanges();
                 MessageBox.Show("Iscrizione avvenuta con successo," +
                 " benvenut* su FitnessLink!");
-
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+                dateTimePicker1.Value = DateTime.Now;
             } 
             catch (Exception ex) 
             {
                 Form1.ErrorMessage(ex.Message);
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+                dateTimePicker1.Value = DateTime.Now;
             }
 
         }

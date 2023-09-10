@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FitnessLink
 {
@@ -34,20 +36,20 @@ namespace FitnessLink
 
             if (radioButton1.Checked)
             {
-                prezzo = 50.00m;
+                prezzo = 50m;
 
             }
             else if (radioButton2.Checked)
             {
-                prezzo = 70.00m;
+                prezzo = 70m;
             }
             else if (radioButton3.Checked)
             {
-                prezzo = 100.00m;
+                prezzo = 100m;
             }
             else
             {
-                prezzo = 50.00m;
+                prezzo = 50m;
             }
 
 
@@ -68,16 +70,30 @@ namespace FitnessLink
                     Form1.db.VISITA.InsertOnSubmit(v);
                     Form1.db.SubmitChanges();
                     MessageBox.Show("Visita prenotata con successo!");
-
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    dateTimePicker1.Value = DateTime.Now;
+                    foreach (RadioButton radioButton in groupBox1.Controls.OfType<RadioButton>())
+                    {
+                        radioButton.Checked = false;
+                    }
                 }
                 catch (Exception ex)
                 {
                     Form1.ErrorMessage(ex.Message);
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    dateTimePicker1.Value = DateTime.Now;
+                    foreach (RadioButton radioButton in groupBox1.Controls.OfType<RadioButton>())
+                    {
+                        radioButton.Checked = false;
+                    }
                 }
             }
             else
             {
                 Form1.ErrorMessage("Inserisci un numero valido");
+                textBox2.Text = "";
             }
         }
 

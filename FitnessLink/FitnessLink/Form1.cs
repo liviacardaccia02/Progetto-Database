@@ -122,7 +122,17 @@ namespace FitnessLink
                         break;
                     case "Allenamento":
                         res = from A in Form1.db.ALLENAMENTO
-                              select A;
+                              join U in Form1.db.UTENTE
+                              on A.Utente equals U.IDutente
+                              select new
+                              {
+                                 A.CodiceAllenamento,
+                                 A.Titolo,
+                                 A.DataAllenamento,
+                                 A.DurataMinuti,
+                                 A.LivelloIntensità,
+                                 Creatore = U.Username
+                              };
                         break;
                     case "Esercizio":
                         res = from es in Form1.db.ESERCIZIO
@@ -139,7 +149,14 @@ namespace FitnessLink
                         break;
                     case "Aggiunta":
                         res = from A in Form1.db.AGGIUNTA
-                              select A;
+                              join al in Form1.db.ALLENAMENTO
+                              on A.CodiceAllenamento equals al.CodiceAllenamento
+                              select new
+                              {
+                                  Esercizio = A.NomeEsercizio,
+                                  A.GruppoMuscolareEsercizio,
+                                  Allenamento = al.Titolo,
+                              };
                         break;
                     case "Post":
                         res = from p in db.POST
@@ -159,15 +176,44 @@ namespace FitnessLink
                         break;
                     case "Misurazione_corporea":
                         res = from M in Form1.db.MISURAZIONE_CORPOREA
-                              select M;
+                              join U in Form1.db.UTENTE
+                              on M.Utente equals U.IDutente
+                              select new
+                              {
+                                  Utente = U.Username,
+                                  M.DataMisurazione,
+                                  M.Peso,
+                                  M.Altezza,
+                                  M.CirconferenzaVita,
+                                  M.CirconferenzaBraccia,
+                                  M.CirconferenzaGambe,     
+                              };
                         break;
                     case "Amicizia":
                         res = from A in Form1.db.AMICIZIA
-                              select A;
+                              join U1 in Form1.db.UTENTE
+                              on A.Ricevente equals U1.IDutente
+                              join U2 in Form1.db.UTENTE
+                              on A.Richiedente equals U2.IDutente
+                              select new
+                              {
+                                  Ricevente = U1.Username,
+                                  Richiedente = U2.Username,
+                                  A.StatoAmicizia,
+                              };
                         break;
                     case "Interazione":
                         res = from I in Form1.db.INTERAZIONE
-                              select I;
+                              join U in Form1.db.UTENTE
+                              on I.Utente equals U.IDutente
+                              select new
+                              {
+                                  I.IDinterazione,
+                                  I.TipoInterazione,
+                                  I.Testo,
+                                  I.Data,
+                                  Utente = U.Username,
+                              };
                         break;
                     case "Medico":
                         res = from M in Form1.db.MEDICO
@@ -175,7 +221,19 @@ namespace FitnessLink
                         break;
                     case "Visita":
                         res = from V in Form1.db.VISITA
-                              select V;
+                              join U in Form1.db.UTENTE
+                              on V.Paziente equals U.IDutente
+                              join M in Form1.db.MEDICO
+                              on V.Medico equals M.CF
+                              select new
+                              {
+                                  V.CodiceVisita,
+                                  V.DataVisita,
+                                  V.OraVisita,
+                                  PrezzoVisita = ((int)V.PrezzoVisita),
+                                  Paziente = U.Cognome,
+                                  Medico = M.Cognome,
+                              };
                         break;
                 }
 
