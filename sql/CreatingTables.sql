@@ -1,19 +1,36 @@
-use SocialNetworkPalestra;
+create database FitnessLink;
 
-create table AGGIUNTA (
-     NomeEsercizio varchar(20) not null,
-     GruppoMuscolareEsercizio varchar(20) not null,
-     CodiceAllenamento int not null,
-     constraint IDAGGIUNTA primary key (NomeEsercizio, GruppoMuscolareEsercizio, CodiceAllenamento));
+create table UTENTE (
+     IDutente int identity(1,1) not null,
+     Nome varchar(20) not null,
+     Cognome varchar(20) not null,
+     Username varchar(20) not null,
+     Email varchar(100) not null,
+     DataRegistrazione date not null,
+     NumeroTelefono varchar(10),
+     constraint IDUTENTE_ID primary key (IDutente));
+
+create table ESERCIZIO (
+     Nome varchar(30) not null default 'Nuovo Esercizio',
+     GruppoMuscolare  varchar(30) not null,
+     Descrizione varchar(200) not null,
+     Creatore int not null,
+     constraint IDESERCIZIO primary key (Nome, GruppoMuscolare));
 
 create table ALLENAMENTO (
      CodiceAllenamento int identity(1,1) not null,
      Titolo varchar(50) not null default 'Nuovo Allenamento',
      DataAllenamento date not null default '2023-09-01',
      DurataMinuti int not null default '60',
-     LivelloIntensit‡ varchar(20) not null default 'Facile',
+     LivelloIntensit√† varchar(20) not null default 'Facile',
      Utente int not null,
      constraint IDALLENAMENTO primary key (CodiceAllenamento));
+
+create table AGGIUNTA (
+     NomeEsercizio varchar(30) not null,
+     GruppoMuscolareEsercizio varchar(30) not null,
+     CodiceAllenamento int not null,
+     constraint IDAGGIUNTA primary key (NomeEsercizio, GruppoMuscolareEsercizio, CodiceAllenamento));
 
 create table AMICIZIA (
      Richiedente int not null,
@@ -21,20 +38,24 @@ create table AMICIZIA (
      StatoAmicizia varchar(10) not null default 'In attesa',
      constraint IDAMICIZIA primary key (Richiedente, Ricevente));
 
-create table ESERCIZIO (
-     Nome varchar(20) not null default 'Nuovo Esercizio',
-     GruppoMuscolare  varchar(20) not null default 'Gruppo muscolare non disponibile',
-     Descrizione varchar(200) not null default 'Descrizione non disponibile',
-     Creatore int not null,
-     constraint IDESERCIZIO primary key (Nome, GruppoMuscolare));
+create table POST (
+     IDpost int identity(1,1) not null,
+     AllenamentoCollegato int not null,
+     DataPubblicazione date not null default GETDATE(),
+     Titolo varchar(50) not null default 'Nuovo Post',
+     Didascalia varchar(200) not null default 'Ecco il mio allenamento!',
+     Autore int not null,
+     constraint IDPOST primary key (IDpost),
+     constraint FKcollegamento_ID unique (AllenamentoCollegato));
 
 create table INTERAZIONE (
      IDinterazione int identity(1,1) not null,
      TipoInterazione varchar(10) not null default 'Like',
      Testo varchar(200),
-     Data date not null default '2023-09-01',
+     Data date not null default GETDATE(),
      Utente int not null,
-     constraint IDINTERAZIONI primary key (IDinterazione));
+     Post int not null,
+     constraint IDINTERAZIONE primary key (IDinterazione));
 
 create table MEDICO (
      CF varchar(16) not null,
@@ -54,28 +75,6 @@ create table MISURAZIONE_CORPOREA (
      CirconferenzaBraccia float,
      CirconferenzaGambe float,
      constraint IDMISURAZIONE_CORPOREA primary key (Utente, DataMisurazione));
-
-create table POST (
-     IDpost int identity(1,1) not null,
-     Interazione int,
-     AllenamentoCollegato int not null,
-     DataPubblicazione date not null,
-     Titolo varchar(50) not null default 'Nuovo Post',
-     Didascalia varchar(200) not null default 'Ecco il mio allenamento!',
-     Autore int not null,
-     constraint IDPOST primary key (IDpost),
-     constraint FKriferimento_ID unique (Interazione),
-     constraint FKcollegamento_ID unique (AllenamentoCollegato));
-
-create table UTENTE (
-     IDutente int identity(1,1) not null,
-     Nome varchar(20) not null,
-     Cognome varchar(20) not null,
-     Username varchar(20) not null,
-     Email varchar(100) not null,
-     DataRegistrazione date not null,
-     NumeroTelefono varchar(10),
-     constraint IDUTENTE_ID primary key (IDutente));
 
 create table VISITA (
      CodiceVisita int identity(1,1) not null,
@@ -114,17 +113,17 @@ alter table ESERCIZIO add constraint FKcreazione
      foreign key (Creatore)
      references UTENTE;
 
-alter table INTERAZIONE add constraint FKcondivisione
+alter table INTERAZIONE add constraint FKrilascio
      foreign key (Utente)
      references UTENTE;
+
+alter table INTERAZIONE add constraint FKricevimento
+     foreign key (Post)
+     references POST;
 
 alter table MISURAZIONE_CORPOREA add constraint FKinserimento
      foreign key (Utente)
      references UTENTE;
-
-alter table POST add constraint FKriferimento_FK
-     foreign key (Interazione)
-     references INTERAZIONE;
 
 alter table POST add constraint FKcollegamento_FK
      foreign key (AllenamentoCollegato)
